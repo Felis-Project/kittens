@@ -7,7 +7,7 @@ micromixin = "1.1-ALPHA"
 dokka = "1.9.20"
 
 [libraries]
-felis = { group = "io.github.joemama", name = "loader", version.ref = "felis" }
+felis = { group = "io.github.joemama", name = "felis", version.ref = "felis" }
 micromixin = { group = "io.github.joemama", name = "micromixin", version.ref = "micromixin" }
 
 [plugins]
