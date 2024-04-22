@@ -1,6 +1,6 @@
-package io.github.joemama.loader.api.mixins;
+package felis.kittens.core.mixins;
 
-import io.github.joemama.loader.api.event.GameEvents;
+import felis.kittens.core.event.GameEvents;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

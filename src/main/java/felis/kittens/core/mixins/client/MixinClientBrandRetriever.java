@@ -1,4 +1,4 @@
-package io.github.joemama.loader.api.mixins.client;
+package felis.kittens.core.mixins.client;
 
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.obfuscate.DontObfuscate;

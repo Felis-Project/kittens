@@ -1,4 +1,4 @@
-package io.github.joemama.loader.api.event
+package felis.kittens.core.event
 
 import net.minecraft.core.BlockPos
 import net.minecraft.world.entity.player.Player

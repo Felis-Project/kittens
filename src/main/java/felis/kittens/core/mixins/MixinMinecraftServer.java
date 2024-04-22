@@ -1,4 +1,4 @@
-package io.github.joemama.loader.api.mixins;
+package felis.kittens.core.mixins;
 
 import net.minecraft.obfuscate.DontObfuscate;
 import net.minecraft.server.MinecraftServer;

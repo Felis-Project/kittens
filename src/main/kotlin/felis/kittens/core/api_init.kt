@@ -1,15 +1,15 @@
 @file:JvmName("ApiInit")
 
-package io.github.joemama.loader.api
+package felis.kittens.core
 
-import io.github.joemama.loader.ModLoader
-import io.github.joemama.loader.api.event.LoaderEvents
-import io.github.joemama.loader.api.event.MapEventContainer
-import io.github.joemama.loader.asm.AccessModifier
-import io.github.joemama.loader.asm.InjectionPoint
-import io.github.joemama.loader.asm.openMethod
-import io.github.joemama.loader.transformer.ClassContainer
-import io.github.joemama.loader.transformer.Transformation
+import felis.ModLoader
+import felis.asm.AccessModifier
+import felis.asm.InjectionPoint
+import felis.asm.openMethod
+import felis.kittens.core.event.LoaderEvents
+import felis.kittens.core.event.MapEventContainer
+import felis.transformer.ClassContainer
+import felis.transformer.Transformation
 import net.minecraft.server.Bootstrap
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -39,7 +39,7 @@ object BuiltInRegistriesTransformation : Transformation {
             inject(InjectionPoint.Invoke(owner, "freeze", limit = 1)) {
                 // running this early in case mods want to print using System.out
                 invokeStatic(locate(Bootstrap::class.java), "wrapStreams")
-                invokeStatic(locate("io.github.joemama.loader.api.ApiInit"), "apiInit")
+                invokeStatic(locate("felis.kittens.core.ApiInit"), "apiInit")
             }
         }
     }

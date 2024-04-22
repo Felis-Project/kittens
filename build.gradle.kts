@@ -1,6 +1,6 @@
 allprojects {
-    group = "io.github.joemama"
-    version = "1.1-ALPHA"
+    group = "felis.kittens"
+    version = "1.2.0-alpha"
 }
 
 plugins {
@@ -21,6 +21,22 @@ dependencies {
 tasks.processResources {
     filesMatching("mods.toml") {
         expand("version" to version)
+    }
+}
+
+java {
+    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+    withSourcesJar()
+    withJavadocJar()
+}
+
+kotlin {
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 

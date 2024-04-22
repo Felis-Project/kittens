@@ -5,22 +5,22 @@ modid = "kittens"
 
 [[transforms]]
 name = "BuiltInRegistries transformation for common entrypoint"
-path = "io.github.joemama.loader.api.BuiltInRegistriesTransformation"
+path = "felis.kittens.core.BuiltInRegistriesTransformation"
 target = "net.minecraft.core.registries.BuiltInRegistries"
 
 [[transforms]]
 name = "Bootstrap access widener"
-path = "io.github.joemama.loader.api.BootstrapTransformation"
+path = "felis.kittens.core.BootstrapTransformation"
 target = "net.minecraft.server.Bootstrap"
 
 [[transforms]]
 name = "Minecraft transformation for client entrypoint"
-path = "io.github.joemama.loader.api.client.MinecraftTransformation"
+path = "felis.kittens.core.client.MinecraftTransformation"
 target = "net.minecraft.client.Minecraft"
 
 [[transforms]]
 name = "Main transformation for server entrypoint"
-path = "io.github.joemama.loader.api.server.MainTransformation"
+path = "felis.kittens.core.server.MainTransformation"
 target = "net.minecraft.server.Main"
 
 [[mixins]]

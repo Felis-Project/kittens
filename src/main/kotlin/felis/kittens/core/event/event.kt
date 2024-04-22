@@ -1,7 +1,7 @@
-package io.github.joemama.loader.api.event
+package felis.kittens.core.event
 
-import io.github.joemama.loader.side.OnlyIn
-import io.github.joemama.loader.side.Side
+import felis.side.OnlyIn
+import felis.side.Side
 import net.minecraft.resources.ResourceLocation
 
 /**
