@@ -1,5 +1,5 @@
 allprojects {
-    group = "felis.kittens"
+    group = "felis"
     version = "1.2.0-alpha"
 }
 
