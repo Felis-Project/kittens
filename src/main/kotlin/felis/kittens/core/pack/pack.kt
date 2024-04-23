@@ -4,12 +4,10 @@ import felis.ModLoader
 import felis.kittens.core.Kittens
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
-import net.minecraft.server.packs.CompositePackResources
-import net.minecraft.server.packs.PackResources
-import net.minecraft.server.packs.PackType
+import net.minecraft.server.packs.*
 import net.minecraft.server.packs.metadata.MetadataSectionSerializer
 import net.minecraft.server.packs.repository.Pack
-import net.minecraft.server.packs.repository.Pack.Info
+import net.minecraft.server.packs.repository.Pack.Metadata
 import net.minecraft.server.packs.repository.Pack.ResourcesSupplier
 import net.minecraft.server.packs.repository.PackCompatibility
 import net.minecraft.server.packs.repository.PackSource
@@ -18,8 +16,8 @@ import net.minecraft.server.packs.resources.IoSupplier
 import net.minecraft.world.flag.FeatureFlagSet
 import java.io.InputStream
 import java.nio.file.Files
+import java.util.Optional
 import java.util.function.Consumer
-import java.util.function.UnaryOperator
 import kotlin.io.path.*
 import kotlin.streams.asSequence
 
@@ -35,32 +33,42 @@ object ModPackSource : RepositorySource {
         val pack = CompositePackResources(primary, modPacks)
 
         registrar.accept(
-            Pack.create(
-                Kittens.MODID,
-                Component.translatable("kittens.resources"),
-                true,
+            Pack(
+                PackLocationInfo(
+                    Kittens.MODID,
+                    Component.translatable("kittens.resources"),
+                    PackSource.DEFAULT,
+                    Optional.empty()
+                ),
                 SimpleReferenceSupplier(pack),
-                Info(
+                Metadata(
                     Component.translatable("kittens.resources"),
                     PackCompatibility.COMPATIBLE,
                     FeatureFlagSet.of(),
                     listOf()
                 ),
-                Pack.Position.TOP,
-                true,
-                PackSource.create(UnaryOperator.identity(), true)
+                PackSelectionConfig(true, Pack.Position.TOP, true)
             )
         )
     }
 }
 
 data class SimpleReferenceSupplier(val ref: PackResources) : ResourcesSupplier {
-    override fun openPrimary(path: String): PackResources = this.ref
-    override fun openFull(path: String, info: Info): PackResources = this.ref
+    override fun openPrimary(locInfo: PackLocationInfo): PackResources = this.ref
+    override fun openFull(locInfo: PackLocationInfo, meta: Metadata): PackResources = this.ref
 }
 
 class ModPackResources(private val modid: String) : PackResources {
     private val mod = ModLoader.discoverer.first { it.meta.modid == this.modid }
+    private val location by lazy {
+        PackLocationInfo(
+            this.modid,
+            Component.translatable("kittens.resources"),
+            PackSource.DEFAULT,
+            Optional.empty()
+        )
+    }
+
     override fun close() {}
 
     override fun getRootResource(vararg path: String): IoSupplier<InputStream>? =
@@ -100,5 +108,6 @@ class ModPackResources(private val modid: String) : PackResources {
         } ?: mutableSetOf()
 
     override fun <T : Any?> getMetadataSection(ser: MetadataSectionSerializer<T>): T? = null
+    override fun location(): PackLocationInfo = this.location
     override fun packId(): String = this.modid
 }
