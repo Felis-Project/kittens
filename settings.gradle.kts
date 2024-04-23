@@ -10,3 +10,4 @@ pluginManagement {
 }
 
 rootProject.name = "kittens"
+include("testmod")

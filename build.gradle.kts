@@ -1,12 +1,17 @@
 allprojects {
     group = "felis"
-    version = "1.2.0-alpha"
+    version = "1.2.1-alpha"
 }
+
 
 plugins {
     alias(libs.plugins.felis.dam)
     `maven-publish`
     alias(libs.plugins.dokka)
+}
+
+repositories {
+    mavenLocal()
 }
 
 loaderMake {

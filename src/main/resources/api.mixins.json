@@ -6,7 +6,8 @@
   "mixins": [
     "MixinMinecraftServer",
     "MixinServerPlayerGameMode",
-    "MixinPlayer"
+    "MixinPlayer",
+    "MixinBuiltInPackSource"
   ],
   "client": [
     "client.MixinClientBrandRetriever"

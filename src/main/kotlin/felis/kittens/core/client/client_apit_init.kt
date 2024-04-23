@@ -5,7 +5,7 @@ package felis.kittens.core.client
 import felis.ModLoader
 import felis.asm.InjectionPoint
 import felis.asm.openMethod
-import felis.kittens.core.LoaderApi
+import felis.kittens.core.Kittens
 import felis.kittens.core.event.LoaderEvents
 import felis.kittens.core.event.MapEventContainer
 import felis.side.OnlyIn
@@ -27,7 +27,7 @@ interface ClientEntrypoint {
 @Suppress("unused")
 @OnlyIn(Side.CLIENT)
 fun clientApiInit() {
-    LoaderApi.logger.trace("Calling client entrypoint")
+    Kittens.logger.trace("Calling client entrypoint")
     ModLoader.callEntrypoint(ClientEntrypoint.KEY, ClientEntrypoint::onClientInit)
     LoaderEvents.entrypointLoaded.fire(MapEventContainer.JointEventContext(ClientEntrypoint.KEY, Unit))
 }

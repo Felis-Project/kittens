@@ -22,13 +22,14 @@ interface CommonEntrypoint {
     fun onInit()
 }
 
-object LoaderApi {
+object Kittens {
     val logger: Logger = LoggerFactory.getLogger("Kittens API")
+    const val MODID = "kittens"
 }
 
 @Suppress("unused")
 fun apiInit() {
-    LoaderApi.logger.trace("Calling common entrypoint")
+    Kittens.logger.trace("Calling common entrypoint")
     ModLoader.callEntrypoint(CommonEntrypoint.KEY, CommonEntrypoint::onInit)
     LoaderEvents.entrypointLoaded.fire(MapEventContainer.JointEventContext(CommonEntrypoint.KEY, Unit))
 }
