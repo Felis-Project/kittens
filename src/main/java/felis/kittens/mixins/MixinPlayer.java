@@ -1,4 +1,4 @@
-package felis.kittens.core.mixins;
+package felis.kittens.mixins;
 
 import felis.kittens.core.event.GameEvents;
 import net.minecraft.world.entity.player.Player;

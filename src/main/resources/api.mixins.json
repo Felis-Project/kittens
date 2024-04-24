@@ -1,16 +1,19 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "felis.kittens.core.mixins",
+  "package": "felis.kittens.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinMinecraftServer",
     "MixinServerPlayerGameMode",
     "MixinPlayer",
-    "MixinBuiltInPackSource"
+    "MixinBuiltInPackSource",
+    "MixinMinecraftServer"
   ],
   "client": [
-    "client.MixinClientBrandRetriever"
+    "client.MixinClientBrandRetriever",
+    "keymapping.MixinOptions",
+    "client.MixinMinecraft",
+    "client.MixinGui"
   ],
   "injectors": {
     "defaultRequire": 1

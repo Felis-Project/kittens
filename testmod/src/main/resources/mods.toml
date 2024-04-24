@@ -5,3 +5,7 @@ version = "${version}"
 [[entrypoints]]
 id = "common"
 path = "io.github.joemama.testmod.Testmod"
+
+[[entrypoints]]
+id = "client"
+path = "io.github.joemama.testmod.TestmodClient"

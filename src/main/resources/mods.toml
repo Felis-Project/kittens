@@ -23,5 +23,10 @@ name = "Main transformation for server entrypoint"
 path = "felis.kittens.core.server.MainTransformation"
 target = "net.minecraft.server.Main"
 
+[[transforms]]
+name = "Options transformation for mutable access to keyMappings field"
+path = "felis.kittens.keymapping.OptionsTransformation"
+target = "net.minecraft.client.Options"
+
 [[mixins]]
 path = "api.mixins.json"

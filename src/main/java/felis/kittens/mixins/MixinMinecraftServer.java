@@ -1,4 +1,4 @@
-package felis.kittens.core.mixins;
+package felis.kittens.mixins;
 
 import net.minecraft.obfuscate.DontObfuscate;
 import net.minecraft.server.MinecraftServer;

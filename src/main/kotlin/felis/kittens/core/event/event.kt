@@ -2,6 +2,7 @@ package felis.kittens.core.event
 
 import felis.side.OnlyIn
 import felis.side.Side
+import net.minecraft.client.Minecraft
 import net.minecraft.resources.ResourceLocation
 
 /**
@@ -230,14 +231,23 @@ object GameEvents {
         }
     }
 
-    object Entity
-    object Item
-    object Level
-    object BlockEntity
-    object Chunk
-
     @OnlyIn(Side.CLIENT)
-    object Client
+    object Client {
+        @OnlyIn(Side.CLIENT)
+        object Tick {
+            @JvmField
+            val start = EventContainer<Minecraft>()
+
+            @JvmField
+            val end = EventContainer<Minecraft>()
+        }
+
+        @OnlyIn(Side.CLIENT)
+        object Render {
+            @JvmField
+            val gui = EventContainer<RenderGuiEventContext>()
+        }
+    }
 
     @OnlyIn(Side.SERVER)
     object Server

@@ -1,4 +1,4 @@
-package felis.kittens.core.mixins;
+package felis.kittens.mixins;
 
 import felis.kittens.core.pack.ModPackSource;
 import net.minecraft.server.packs.repository.BuiltInPackSource;

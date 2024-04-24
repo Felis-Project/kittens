@@ -1,5 +1,8 @@
 package felis.kittens.core.event
 
+import felis.side.OnlyIn
+import felis.side.Side
+import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.core.BlockPos
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
@@ -35,3 +38,7 @@ data class BlockBlockEventContext(
 ) : BlockEventContext, CancellableEventContext, PlayerEventContext<Player> {
     override var isCancelled: Boolean = false
 }
+
+// TODO: Maybe cancellable
+@OnlyIn(Side.CLIENT)
+data class RenderGuiEventContext(val gfx: GuiGraphics, val partialTicks: Float)

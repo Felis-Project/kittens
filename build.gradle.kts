@@ -1,6 +1,6 @@
 allprojects {
     group = "felis"
-    version = "1.2.1-alpha"
+    version = "1.2.2-alpha"
 }
 
 
