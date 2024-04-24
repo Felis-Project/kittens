@@ -12,8 +12,10 @@ import felis.side.OnlyIn
 import felis.side.Side
 import felis.transformer.ClassContainer
 import felis.transformer.Transformation
+import net.minecraft.client.Options
 import net.minecraft.client.main.GameConfig
 import org.objectweb.asm.Type
+import java.io.File
 
 @OnlyIn(Side.CLIENT)
 interface ClientEntrypoint {
@@ -36,7 +38,14 @@ object MinecraftTransformation : Transformation {
     override fun transform(container: ClassContainer) {
         container.openMethod("<init>", Type.getMethodDescriptor(Type.VOID_TYPE, Type.getType(GameConfig::class.java))) {
             inject(
-                InjectionPoint.Invoke(typeOf(Thread::class), "currentThread", typeOf(Thread::class), limit = 1)
+                InjectionPoint.Invoke(
+                    typeOf(Options::class),
+                    "<init>",
+                    Type.VOID_TYPE,
+                    typeOf(owner),
+                    typeOf(File::class),
+                    limit = 1
+                )
             ) {
                 invokeStatic(locate("felis.kittens.core.client.ClientApiInit"), "clientApiInit")
             }

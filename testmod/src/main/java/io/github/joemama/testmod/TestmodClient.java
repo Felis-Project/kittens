@@ -15,5 +15,6 @@ public class TestmodClient implements ClientEntrypoint {
         GameEvents.Client.Render.gui.register(ctx -> {
             if (MY_MAPPING.consumeClick()) Testmod.LOGGER.info("Stuff happened");
         });
+        Testmod.LOGGER.info("Initialized");
     }
 }
