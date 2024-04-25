@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinPlayer {
     @Inject(method = "tick", at = @At("TAIL"))
     private void onTickEnd(CallbackInfo ci) {
-        GameEvents.Player.Tick.end.fire(((Player) (Object) this));
+        GameEvents.Player.tick.start.fire(((Player) (Object) this));
     }
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void onTickStart(CallbackInfo ci) {
-        GameEvents.Player.Tick.start.fire(((Player) (Object) this));
+        GameEvents.Player.tick.end.fire(((Player) (Object) this));
     }
 }

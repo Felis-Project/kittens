@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
     implementation(libs.felis)
+    implementation(libs.micromixin)
     implementation(project(":"))
 }
 

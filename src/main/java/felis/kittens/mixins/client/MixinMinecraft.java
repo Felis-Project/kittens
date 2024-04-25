@@ -11,11 +11,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinMinecraft {
     @Inject(method = "tick", at = @At("HEAD"))
     private void fireStartEvent(CallbackInfo ci) {
-        GameEvents.Client.Tick.start.fire((Minecraft) (Object) this);
+        GameEvents.Client.tick.start.fire((Minecraft) (Object) this);
     }
 
     @Inject(method = "tick", at = @At("RETURN"))
     private void fireEndEvents(CallbackInfo ci) {
-        GameEvents.Client.Tick.end.fire((Minecraft) (Object) this);
+        GameEvents.Client.tick.end.fire((Minecraft) (Object) this);
     }
 }

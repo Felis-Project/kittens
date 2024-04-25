@@ -9,3 +9,6 @@ path = "io.github.joemama.testmod.Testmod"
 [[entrypoints]]
 id = "client"
 path = "io.github.joemama.testmod.TestmodClient"
+
+[[mixins]]
+path = "testmod.mixins.json"

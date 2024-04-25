@@ -173,6 +173,14 @@ open class MapEventContainer<K, T> : EventContainer<MapEventContainer.JointEvent
     }
 }
 
+open class DualEventContainer<C> : EventContainer<C>() {
+    @JvmField
+    val start = EventContainer<C>()
+
+    @JvmField
+    val end = EventContainer<C>()
+}
+
 /**
  * An subclass of [EventContainer] that is able to handle cancellable events.
  */
@@ -216,31 +224,17 @@ object GameEvents {
      * Events related to [Player]s
      */
     object Player {
-        object Tick {
-            /**
-             * Fired at the end of the [net.minecraft.world.entity.player.Player.tick] method.
-             */
-            @JvmField
-            val end = EventContainer<net.minecraft.world.entity.player.Player>()
-
-            /**
-             * Fired at the beginning of the [net.minecraft.world.entity.player.Player.tick] method.
-             */
-            @JvmField
-            val start = EventContainer<net.minecraft.world.entity.player.Player>()
-        }
+        /**
+         * Fired at the beginning and the end of the [net.minecraft.world.entity.player.Player.tick] method.
+         */
+        @JvmField
+        val tick = DualEventContainer<net.minecraft.world.entity.player.Player>()
     }
 
     @OnlyIn(Side.CLIENT)
     object Client {
-        @OnlyIn(Side.CLIENT)
-        object Tick {
-            @JvmField
-            val start = EventContainer<Minecraft>()
-
-            @JvmField
-            val end = EventContainer<Minecraft>()
-        }
+        @JvmField
+        val tick = DualEventContainer<Minecraft>()
 
         @OnlyIn(Side.CLIENT)
         object Render {
@@ -248,9 +242,6 @@ object GameEvents {
             val gui = EventContainer<RenderGuiEventContext>()
         }
     }
-
-    @OnlyIn(Side.SERVER)
-    object Server
 }
 
 object LoaderEvents {
