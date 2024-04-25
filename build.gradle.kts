@@ -1,8 +1,7 @@
 allprojects {
     group = "felis"
-    version = "1.2.2-alpha"
+    version = "1.2.3-alpha"
 }
-
 
 plugins {
     alias(libs.plugins.felis.dam)

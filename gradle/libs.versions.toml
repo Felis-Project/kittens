@@ -3,7 +3,7 @@
 [versions]
 felis = "1.2.2-alpha"
 felis-dam = "1.7.4-alpha"
-micromixin = "1.2.1-alpha"
+micromixin = "1.2.3-alpha"
 dokka = "1.9.20"
 
 [libraries]

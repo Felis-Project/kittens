@@ -1,10 +1,6 @@
 package felis.kittens.keymapping
 
-import felis.transformer.ClassContainer
-import felis.transformer.Transformation
 import net.minecraft.client.KeyMapping
-import org.objectweb.asm.Opcodes
-import org.objectweb.asm.Type
 
 // TODO: Make this better?
 object KeyMappingRegistry {
@@ -34,15 +30,5 @@ object KeyMappingRegistry {
         res.removeAll(this.customMappings)
         res.addAll(this.customMappings)
         return res.toTypedArray()
-    }
-}
-
-// TODO: Temporary, use Mutable once it's merged
-object OptionsTransformation : Transformation {
-    override fun transform(container: ClassContainer) {
-        // implement a pseudo mutable field
-        container.node.fields
-            .first { it.name == "keyMappings" && it.desc == Type.getDescriptor(Array<KeyMapping>::class.java) }
-            .let { it.access = it.access and Opcodes.ACC_FINAL.inv() }
     }
 }
