@@ -1,6 +1,6 @@
 allprojects {
     group = "felis"
-    version = "1.2.4-alpha"
+    version = "1.2.5-alpha"
 }
 
 plugins {
@@ -20,6 +20,7 @@ loaderMake {
 dependencies {
     implementation(libs.felis)
     implementation(libs.micromixin)
+    implementation(libs.aw)
 }
 
 tasks.processResources {

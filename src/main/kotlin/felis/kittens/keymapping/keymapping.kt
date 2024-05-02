@@ -5,6 +5,7 @@ import net.minecraft.client.KeyMapping
 // TODO: Make this better?
 object KeyMappingRegistry {
     private val customMappings: MutableSet<KeyMapping> = hashSetOf()
+    // TODO: Replace with access transformer/widener once it's added
     private val categories: MutableMap<String, Int> by lazy {
         val categoryMap = Class.forName("net.minecraft.client.KeyMapping").getDeclaredField("CATEGORY_SORT_ORDER")
         categoryMap.isAccessible = true

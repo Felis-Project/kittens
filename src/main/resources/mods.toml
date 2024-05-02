@@ -3,15 +3,12 @@ version = "${version}"
 description = "A modern modding API for the Felis project"
 modid = "kittens"
 
+access-widener="kittens.accesswidener"
+
 [[transforms]]
 name = "BuiltInRegistries transformation for common entrypoint"
 path = "felis.kittens.core.BuiltInRegistriesTransformation"
 target = "net.minecraft.core.registries.BuiltInRegistries"
-
-[[transforms]]
-name = "Bootstrap access widener"
-path = "felis.kittens.core.BootstrapTransformation"
-target = "net.minecraft.server.Bootstrap"
 
 [[transforms]]
 name = "Minecraft transformation for client entrypoint"

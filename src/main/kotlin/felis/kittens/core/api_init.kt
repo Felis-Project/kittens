@@ -45,9 +45,3 @@ object BuiltInRegistriesTransformation : Transformation {
         }
     }
 }
-
-object BootstrapTransformation : Transformation {
-    override fun transform(container: ClassContainer) {
-        container.openMethod("wrapStreams", "()V") { access(AccessModifier.PUBLIC) }
-    }
-}
