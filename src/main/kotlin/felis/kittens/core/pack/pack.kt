@@ -58,7 +58,7 @@ data class SimpleReferenceSupplier(val ref: PackResources) : ResourcesSupplier {
     override fun openFull(locInfo: PackLocationInfo, meta: Metadata): PackResources = this.ref
 }
 
-class ModPackResources(private val modid: String) : PackResources {
+data class ModPackResources(private val modid: String) : PackResources {
     private val mod = ModLoader.discoverer.first { it.meta.modid == this.modid }
     private val location by lazy {
         PackLocationInfo(

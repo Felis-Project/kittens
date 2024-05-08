@@ -14,7 +14,7 @@ repositories {
 }
 
 loaderMake {
-    version = "1.20.5"
+    version = "1.20.6"
 }
 
 dependencies {
