@@ -1,9 +1,11 @@
+schema = 1
 name = "Kittens API"
 version = "${version}"
 description = "A modern modding API for the Felis project"
 modid = "kittens"
 
 access-widener="kittens.accesswidener"
+mixins = "api.mixins.json"
 
 [[transforms]]
 name = "BuiltInRegistries transformation for common entrypoint"
@@ -20,5 +22,3 @@ name = "Main transformation for server entrypoint"
 path = "felis.kittens.core.server.MainTransformation"
 target = "net.minecraft.server.Main"
 
-[[mixins]]
-path = "api.mixins.json"

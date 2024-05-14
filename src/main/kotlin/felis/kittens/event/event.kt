@@ -1,9 +1,10 @@
-package felis.kittens.core.event
+package felis.kittens.event
 
 import felis.side.OnlyIn
 import felis.side.Side
 import net.minecraft.client.Minecraft
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.world.entity.player.Player
 
 /**
  * Public API for Event Ordering.

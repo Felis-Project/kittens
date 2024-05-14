@@ -22,7 +22,7 @@ dependencies {
 }
 
 tasks.processResources {
-    filesMatching("mods.toml") {
+    filesMatching("felis.mod.toml") {
         expand("version" to version)
     }
 }

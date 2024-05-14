@@ -1,7 +1,7 @@
 package felis.kittens.mixins.client;
 
-import felis.kittens.core.event.GameEvents;
-import felis.kittens.core.event.RenderGuiEventContext;
+import felis.kittens.event.GameEvents;
+import felis.kittens.event.RenderGuiEventContext;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
 import org.spongepowered.asm.mixin.Mixin;

@@ -2,7 +2,7 @@ package io.github.joemama.testmod;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import felis.kittens.core.client.ClientEntrypoint;
-import felis.kittens.core.event.GameEvents;
+import felis.kittens.event.GameEvents;
 import felis.kittens.keymapping.KeyMappingRegistry;
 import net.minecraft.client.KeyMapping;
 

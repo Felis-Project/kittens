@@ -15,6 +15,7 @@ repositories {
 
 loaderMake {
     version = "1.20.6"
+    accessWidener(file("src/main/resources/kittens.accesswidener"))
 }
 
 dependencies {
@@ -24,7 +25,7 @@ dependencies {
 }
 
 tasks.processResources {
-    filesMatching("mods.toml") {
+    filesMatching("felis.mod.toml") {
         expand("version" to version)
     }
 }

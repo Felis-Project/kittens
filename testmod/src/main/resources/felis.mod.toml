@@ -1,6 +1,9 @@
+schema = 1
 name = "Testmod"
 modid = "testmod"
 version = "${version}"
+
+mixins = "testmod.mixins.json"
 
 [[entrypoints]]
 id = "common"
@@ -10,5 +13,3 @@ path = "io.github.joemama.testmod.Testmod"
 id = "client"
 path = "io.github.joemama.testmod.TestmodClient"
 
-[[mixins]]
-path = "testmod.mixins.json"

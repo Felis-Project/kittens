@@ -3,11 +3,10 @@
 package felis.kittens.core
 
 import felis.ModLoader
-import felis.asm.AccessModifier
 import felis.asm.InjectionPoint
 import felis.asm.openMethod
-import felis.kittens.core.event.LoaderEvents
-import felis.kittens.core.event.MapEventContainer
+import felis.kittens.event.LoaderEvents
+import felis.kittens.event.MapEventContainer
 import felis.transformer.ClassContainer
 import felis.transformer.Transformation
 import net.minecraft.server.Bootstrap
@@ -29,6 +28,7 @@ object Kittens {
 
 @Suppress("unused")
 fun apiInit() {
+    Bootstrap.wrapStreams()
     Kittens.logger.trace("Calling common entrypoint")
     ModLoader.callEntrypoint(CommonEntrypoint.KEY, CommonEntrypoint::onInit)
     LoaderEvents.entrypointLoaded.fire(MapEventContainer.JointEventContext(CommonEntrypoint.KEY, Unit))

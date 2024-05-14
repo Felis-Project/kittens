@@ -1,6 +1,6 @@
 package felis.kittens.mixins.client;
 
-import felis.kittens.core.event.GameEvents;
+import felis.kittens.event.GameEvents;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

@@ -5,13 +5,6 @@ import net.minecraft.client.KeyMapping
 // TODO: Make this better?
 object KeyMappingRegistry {
     private val customMappings: MutableSet<KeyMapping> = hashSetOf()
-    // TODO: Replace with access transformer/widener once it's added
-    private val categories: MutableMap<String, Int> by lazy {
-        val categoryMap = Class.forName("net.minecraft.client.KeyMapping").getDeclaredField("CATEGORY_SORT_ORDER")
-        categoryMap.isAccessible = true
-        @Suppress("UNCHECKED_CAST") // we do hacky stuff so yea
-        categoryMap.get(null) as MutableMap<String, Int>
-    }
 
     @JvmStatic
     fun register(mapping: KeyMapping) {
@@ -22,8 +15,8 @@ object KeyMappingRegistry {
     }
 
     private fun addCategory(category: String) {
-        if (categories[category] != null) return
-        this.categories[category] = this.categories.size + 1
+        if (KeyMapping.CATEGORY_SORT_ORDER[category] != null) return
+        KeyMapping.CATEGORY_SORT_ORDER[category] = KeyMapping.CATEGORY_SORT_ORDER.size + 1
     }
 
     fun inject(oldMappings: Array<KeyMapping>): Array<KeyMapping> {

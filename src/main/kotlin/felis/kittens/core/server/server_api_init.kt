@@ -6,8 +6,8 @@ import felis.ModLoader
 import felis.asm.InjectionPoint
 import felis.asm.openMethod
 import felis.kittens.core.Kittens
-import felis.kittens.core.event.LoaderEvents
-import felis.kittens.core.event.MapEventContainer
+import felis.kittens.event.LoaderEvents
+import felis.kittens.event.MapEventContainer
 import felis.side.OnlyIn
 import felis.side.Side
 import felis.transformer.ClassContainer

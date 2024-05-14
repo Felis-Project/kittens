@@ -1,7 +1,7 @@
 package felis.kittens.mixins;
 
-import felis.kittens.core.event.GameEvents;
-import felis.kittens.core.event.BlockBlockEventContext;
+import felis.kittens.event.GameEvents;
+import felis.kittens.event.BlockBlockEventContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

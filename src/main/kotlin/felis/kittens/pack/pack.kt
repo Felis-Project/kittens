@@ -1,4 +1,4 @@
-package felis.kittens.core.pack
+package felis.kittens.pack
 
 import felis.ModLoader
 import felis.kittens.core.Kittens
@@ -24,9 +24,10 @@ import kotlin.streams.asSequence
 // TODO: Reloadable listener
 object ModPackSource : RepositorySource {
     override fun loadPacks(registrar: Consumer<Pack>) {
-        val modPacks = ModLoader.discoverer.asSequence()
-            .map { it.meta.modid }
-            .filter { it != Kittens.MODID }
+        val modPacks = ModLoader.discoverer.mods.asSequence()
+            .map { it.metadata.modid }
+            // since MC is considered a mod, including it leads to resources going missing ;)
+            .filter { it != Kittens.MODID && it != "minecraft" }
             .map { ModPackResources(it) }
             .toList()
         val primary = ModPackResources(Kittens.MODID)
@@ -59,7 +60,7 @@ data class SimpleReferenceSupplier(val ref: PackResources) : ResourcesSupplier {
 }
 
 data class ModPackResources(private val modid: String) : PackResources {
-    private val mod = ModLoader.discoverer.first { it.meta.modid == this.modid }
+    private val mod = ModLoader.discoverer.mods.first { it.metadata.modid == this.modid }
     private val location by lazy {
         PackLocationInfo(
             this.modid,

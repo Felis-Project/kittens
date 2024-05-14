@@ -1,4 +1,4 @@
-package felis.kittens.core.event
+package felis.kittens.event
 
 import felis.side.OnlyIn
 import felis.side.Side
