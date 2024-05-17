@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.Overwrite;
 @Mixin(ClientBrandRetriever.class)
 public class MixinClientBrandRetriever {
     /**
-     * Nobody else gets the right to change our branding
      * @author 0xJoeMama
+     * @reason nobody else gets the right to change our branding
      */
     @DontObfuscate
     @Overwrite

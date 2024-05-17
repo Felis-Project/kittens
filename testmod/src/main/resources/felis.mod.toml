@@ -7,9 +7,9 @@ mixins = "testmod.mixins.json"
 
 [[entrypoints]]
 id = "common"
-path = "io.github.joemama.testmod.Testmod"
+specifier = "io.github.joemama.testmod.Testmod"
 
 [[entrypoints]]
 id = "client"
-path = "io.github.joemama.testmod.TestmodClient"
+specifier = "io.github.joemama.testmod.TestmodClient"
 
