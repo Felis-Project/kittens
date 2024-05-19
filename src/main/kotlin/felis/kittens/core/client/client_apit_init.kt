@@ -3,8 +3,6 @@
 package felis.kittens.core.client
 
 import felis.ModLoader
-import felis.asm.InjectionPoint
-import felis.asm.openMethod
 import felis.kittens.core.Kittens
 import felis.kittens.event.LoaderEvents
 import felis.kittens.event.MapEventContainer
@@ -14,8 +12,9 @@ import felis.transformer.ClassContainer
 import felis.transformer.Transformation
 import net.minecraft.client.Options
 import net.minecraft.client.main.GameConfig
+import org.objectweb.asm.Opcodes
 import org.objectweb.asm.Type
-import java.io.File
+import org.objectweb.asm.tree.MethodInsnNode
 
 @OnlyIn(Side.CLIENT)
 interface ClientEntrypoint {
@@ -29,25 +28,34 @@ interface ClientEntrypoint {
 @Suppress("unused")
 @OnlyIn(Side.CLIENT)
 fun clientApiInit() {
-    Kittens.logger.trace("Calling client entrypoint")
+    Kittens.logger.debug("Calling client entrypoint")
     ModLoader.callEntrypoint(ClientEntrypoint.KEY, ClientEntrypoint::onClientInit)
     LoaderEvents.entrypointLoaded.fire(MapEventContainer.JointEventContext(ClientEntrypoint.KEY, Unit))
 }
 
 object MinecraftTransformation : Transformation {
     override fun transform(container: ClassContainer) {
-        container.openMethod("<init>", Type.getMethodDescriptor(Type.VOID_TYPE, Type.getType(GameConfig::class.java))) {
-            inject(
-                InjectionPoint.Invoke(
-                    typeOf(Options::class),
-                    "<init>",
+        container.node { node ->
+            node.methods.first {
+                it.name == "<init>" && it.desc == Type.getMethodDescriptor(
                     Type.VOID_TYPE,
-                    typeOf(owner),
-                    typeOf(File::class),
-                    limit = 1
+                    Type.getType(GameConfig::class.java)
                 )
-            ) {
-                invokeStatic(locate("felis.kittens.core.client.ClientApiInit"), "clientApiInit")
+            }.apply {
+                val target = instructions.first {
+                    it is MethodInsnNode &&
+                            it.owner == Type.getType(Options::class.java).internalName &&
+                            it.name == "<init>"
+                }
+                instructions.insertBefore(
+                    target,
+                    MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "felis/kittens/core/client/ClientApiInit",
+                        "clientApiInit",
+                        "()V"
+                    )
+                )
             }
         }
     }

@@ -7,13 +7,17 @@
     "MixinServerPlayerGameMode",
     "MixinPlayer",
     "MixinBuiltInPackSource",
-    "MixinMinecraftServer"
+    "MixinMinecraftServer",
+    "MixinBuiltInRegistries"
   ],
   "client": [
     "client.MixinClientBrandRetriever",
     "keymapping.MixinOptions",
     "client.MixinMinecraft",
     "client.MixinGui"
+  ],
+  "server": [
+    "server.MixinMain"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -8,16 +8,6 @@ access-widener = "kittens.accesswidener"
 mixins = "api.mixins.json"
 
 [[transformations]]
-name = "BuiltInRegistries transformation for common entrypoint"
-specifier = "felis.kittens.core.BuiltInRegistriesTransformation"
-targets = ["net.minecraft.core.registries.BuiltInRegistries"]
-
-[[transformations]]
-name = "Minecraft transformation for client entrypoint"
-specifier = "felis.kittens.core.client.MinecraftTransformation"
+name = "Minecraft client entrypoint transformation"
 targets = ["net.minecraft.client.Minecraft"]
-
-[[transformations]]
-name = "Main transformation for server entrypoint"
-specifier = "felis.kittens.core.server.MainTransformation"
-targets = ["net.minecraft.server.Main"]
+specifier = "felis.kittens.core.client.MinecraftTransformation"

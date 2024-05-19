@@ -3,12 +3,8 @@
 package felis.kittens.core
 
 import felis.ModLoader
-import felis.asm.InjectionPoint
-import felis.asm.openMethod
 import felis.kittens.event.LoaderEvents
 import felis.kittens.event.MapEventContainer
-import felis.transformer.ClassContainer
-import felis.transformer.Transformation
 import net.minecraft.server.Bootstrap
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -26,22 +22,9 @@ object Kittens {
     const val MODID = "kittens"
 }
 
-@Suppress("unused")
 fun apiInit() {
     Bootstrap.wrapStreams()
-    Kittens.logger.trace("Calling common entrypoint")
+    Kittens.logger.debug("Calling common entrypoint")
     ModLoader.callEntrypoint(CommonEntrypoint.KEY, CommonEntrypoint::onInit)
     LoaderEvents.entrypointLoaded.fire(MapEventContainer.JointEventContext(CommonEntrypoint.KEY, Unit))
-}
-
-object BuiltInRegistriesTransformation : Transformation {
-    override fun transform(container: ClassContainer) {
-        container.openMethod("bootStrap", "()V") {
-            inject(InjectionPoint.Invoke(owner, "freeze", limit = 1)) {
-                // running this early in case mods want to print using System.out
-                invokeStatic(locate(Bootstrap::class.java), "wrapStreams")
-                invokeStatic(locate("felis.kittens.core.ApiInit"), "apiInit")
-            }
-        }
-    }
 }
