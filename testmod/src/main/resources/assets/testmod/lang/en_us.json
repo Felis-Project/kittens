@@ -1,3 +1,5 @@
 {
-  "item.testmod.test_item": "Test Item"
+  "item.testmod.test_item": "Test Item",
+  "category1": "Test",
+  "test.key.mapping": "rawr"
 }
