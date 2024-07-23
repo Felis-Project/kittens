@@ -34,6 +34,16 @@ fun clientApiInit() {
 }
 
 object MinecraftTransformation : Transformation {
+    /*
+    this.toast = new ToastComponent(this);
+    this.gameThread = Thread.currentThread();
+    =======================================================
+    ClientApiInit.clientApiInit();                        |
+    =======================================================
+    this.options = new Options(this, this.gameDirectory);
+    RenderSystem.setShaderGlintAlpha(this.options.glintStrength().get());
+    this.running = true;
+     */
     override fun transform(container: ClassContainer) {
         container.node { node ->
             node.methods.first {

@@ -92,7 +92,7 @@ data class ModPackResources(private val modid: String) : PackResources {
             .filter { !it.isDirectory() }
             .forEach {
                 output.accept(
-                    ResourceLocation(namespace, it.relativeTo(rootPath).pathString),
+                    ResourceLocation.fromNamespaceAndPath(namespace, it.relativeTo(rootPath).pathString),
                     IoSupplier.create(it)
                 )
             }

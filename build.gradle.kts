@@ -1,6 +1,6 @@
 allprojects {
     group = "felis"
-    version = "1.3.1-alpha"
+    version = "1.5.0-alpha"
 }
 
 plugins {
@@ -14,7 +14,7 @@ repositories {
 }
 
 loaderMake {
-    version = "1.20.6"
+    version = "1.21"
     accessWidener(file("src/main/resources/kittens.accesswidener"))
 }
 
@@ -22,6 +22,9 @@ dependencies {
     implementation(libs.felis)
     implementation(libs.micromixin)
     implementation(libs.aw)
+
+    include(libs.micromixin)
+    include(libs.aw)
 }
 
 tasks.processResources {

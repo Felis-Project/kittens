@@ -8,7 +8,7 @@ group = "felis"
 version = "1.2.0-alpha"
 
 loaderMake {
-    version = "1.20.6"
+    version = "1.21"
 }
 
 repositories {

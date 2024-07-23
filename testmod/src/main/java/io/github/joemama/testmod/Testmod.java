@@ -21,11 +21,11 @@ public class Testmod implements CommonEntrypoint {
     @Override
     public void onInit() {
         LOGGER.info("Initialize me baby");
-        Registry.register(BuiltInRegistries.ITEM, new ResourceLocation("testmod", "test_item"), TEST_ITEM);
-        Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation("testmod", "aw_test"), AW_TEST);
+        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath("testmod", "test_item"), TEST_ITEM);
+        Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath("testmod", "aw_test"), AW_TEST);
         // TODO: Once registry sync is added this need to be removed, furthermore, this technically doesn't work on servers
         AW_TEST.getStateDefinition().getPossibleStates().forEach(Block.BLOCK_STATE_REGISTRY::add);
-        Registry.register(BuiltInRegistries.ITEM, new ResourceLocation("testmod", "aw_test"), new BlockItem(AW_TEST, new Item.Properties()));
+        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath("testmod", "aw_test"), new BlockItem(AW_TEST, new Item.Properties()));
         // GameEvents.Player.tick.end.register(player -> LOGGER.info(player.getFelisId()));
     }
 }

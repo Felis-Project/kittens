@@ -13,3 +13,6 @@ specifier = "io.github.joemama.testmod.Testmod"
 id = "client"
 specifier = "io.github.joemama.testmod.TestmodClient"
 
+[[dependencies.requires]]
+modid = "kittens"
+version = "*"
