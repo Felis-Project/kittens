@@ -1,6 +1,6 @@
 allprojects {
     group = "felis"
-    version = "1.5.0-alpha"
+    version = "1.5.1-alpha"
 }
 
 plugins {
@@ -24,6 +24,7 @@ dependencies {
     implementation(libs.aw)
 
     include(libs.micromixin)
+    api(libs.micromixin)
     include(libs.aw)
 }
 

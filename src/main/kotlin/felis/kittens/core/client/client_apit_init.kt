@@ -44,7 +44,7 @@ object MinecraftTransformation : Transformation {
     RenderSystem.setShaderGlintAlpha(this.options.glintStrength().get());
     this.running = true;
      */
-    override fun transform(container: ClassContainer) {
+    override fun transform(container: ClassContainer): ClassContainer =
         container.node { node ->
             node.methods.first {
                 it.name == "<init>" && it.desc == Type.getMethodDescriptor(
@@ -68,5 +68,4 @@ object MinecraftTransformation : Transformation {
                 )
             }
         }
-    }
 }
